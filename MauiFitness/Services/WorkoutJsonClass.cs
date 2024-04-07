@@ -1,0 +1,4 @@
+﻿namespace MauiFitness.Services
+{
+
+}

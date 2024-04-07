@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiFitness.Views.WorkoutsPage"
+             xmlns:converters ="clr-namespace:MauiFitness.Converters"
+             xmlns:model="clr-namespace:MauiFitness.Models"
+             Shell.NavBarIsVisible="True"
+             Shell.BackgroundColor="LightSeaGreen"
+             Title="ExercicePage">
+    <Shell.TitleView>
+        <HorizontalStackLayout>
+            <Button Text="Workouts" BackgroundColor="Transparent" FontSize="Large" TextColor="Black" Clicked="btn_displayworkouts_clicked"/>
+            <ImageButton Source="plus.png" HeightRequest="35" Clicked="btn_addWorkout_clicked" HorizontalOptions="End" WidthRequest="430" />
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+    <ContentPage.Resources>
+        <converters:MetsToColor x:Key="MetsToColor" />
+    </ContentPage.Resources>
+
+
+    <CollectionView x:Name="WorkoutsCollection">
+        <CollectionView.ItemTemplate Padding ="20">
+            <DataTemplate x:DataType="model:Workout">
+                <SwipeView>
+                    <SwipeView.LeftItems>
+                        <SwipeItem  IconImageSource="bin.png" Text="Delete" BackgroundColor="LightPink" Clicked="Swipe_Delete_Clicked" />
+                        <SwipeItem  IconImageSource="edit.png" Text="Edit" BackgroundColor="LightYellow" Clicked="Swipe_Edit_Clicked"/>
+                    </SwipeView.LeftItems>
+
+                    <Grid ColumnDefinitions="75,2*,3*,*" RowDefinitions="*,2*,*" ColumnSpacing="20" RowSpacing="5">
+                        <Image Grid.Column ="0" Grid.Row="0" Grid.RowSpan="3" Source="walk.png" HeightRequest="50"/>
+                        <Label Grid.Column ="1" Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding Name}" FontSize="Medium"/>
+                        <Label Grid.Column ="1" Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding Description}" FontSize="Large"/>
+                        <Label Grid.Column = "1" Grid.Row="2" Text="{Binding Calories , StringFormat = 'Cal Burnt: {0}'}" 
+                                   TextColor="{Binding Calories, Converter={StaticResource MetsToColor}}" FontSize="Small"/>
+                        <Label Grid.Column= "2" Grid.Row="2" Text="{Binding Duration, StringFormat='{00:MM:SS}'}" FontSize="Small"/>
+                    </Grid>
+
+                </SwipeView>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+
+</ContentPage>
