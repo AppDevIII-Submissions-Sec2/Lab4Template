@@ -9,10 +9,13 @@
 
     <TabBar Route="Index">
         <ShellContent
-            Title="Home"
+            Title="Login"
             ContentTemplate="{DataTemplate views:LoginPage}"
             Route="LoginPage" Icon="home.png"/>
-
+        <ShellContent
+            Title="Dashboard"
+            ContentTemplate="{DataTemplate views:MeasuresPage}"
+            Route="MeasuresPage" Icon="speedometer.png"/>
         <ShellContent
             Title="Workouts"
             ContentTemplate="{DataTemplate views:WorkoutsPage}"

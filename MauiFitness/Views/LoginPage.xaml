@@ -11,7 +11,7 @@
 
         <Image Source="dotnet_lifting.png" 
                VerticalOptions="CenterAndExpand" />
-        <Frame Margin="10" BackgroundColor="Transparent" BorderColor="Transparent" x:Name="LoginView">
+        <Frame x:Name="LoginView" Margin="10" BackgroundColor="Transparent" BorderColor="Transparent" >
             <VerticalStackLayout Spacing="10">
                 <Entry x:Name="user_name" Placeholder="Username" PlaceholderColor="Black" BackgroundColor="Transparent"/>
                 <Entry x:Name="password"  Placeholder="Password"  IsPassword="True"  PlaceholderColor="Black" BackgroundColor="Transparent"/>
@@ -23,9 +23,9 @@
                     HorizontalOptions="Center" 
                     BackgroundColor="Black"
                     HeightRequest="50"
-                    Clicked="BtnLogin_Clicked" 
+                    Clicked="Btn_Login_Clicked" 
                     SemanticProperties.Hint="Click to log in"/>
-                <Button 
+                <!--<Button 
                     Text="Sign Up"
                     FontSize="Medium"
                     WidthRequest="330" 
@@ -35,19 +35,22 @@
                     BackgroundColor="White"
                     BorderColor="Black"
                     
-                    />
+                    />-->
                 
             </VerticalStackLayout>
 
         </Frame>
 
-        <Frame Margin="10" BackgroundColor="{StaticResource Secondary}" x:Name="HomeView" IsVisible="false">
+        <Frame  x:Name="LogoutView" Margin="10" BackgroundColor="Transparent" IsVisible="false">
 
             <StackLayout>
                 <Label Text="User Details:" FontAttributes="Bold"/>
                 <Label x:Name="lblUser" FontAttributes="Italic" Margin="0,5,0,30"/>
-                <Button Text="Log Out" SemanticProperties.Hint="Click to log out"
-                Clicked="LogoutBtn_Clicked" VerticalOptions="CenterAndExpand" />
+                <Button Text="Log Out" 
+                        SemanticProperties.Hint="Click to log out"
+                        Clicked="Btn_Logout_Clicked" 
+                        VerticalOptions="CenterAndExpand" 
+                        BackgroundColor="Black"  />
 
             </StackLayout>
 

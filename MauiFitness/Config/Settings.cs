@@ -8,6 +8,7 @@ namespace MauiFitness.Config
 {
     public class Settings
     {
+        ///\ TODO: Add config string variables
         public string CaloriesApiKey { get; set; }
         public string CaloriesApiUrl { get; set; }
 

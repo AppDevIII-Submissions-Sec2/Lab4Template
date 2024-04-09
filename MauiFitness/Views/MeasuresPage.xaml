@@ -3,10 +3,46 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiFitness.Views.MeasuresPage"
              Title="Measures">
-    <VerticalStackLayout Margin="10">
-        <Label 
-            Text="Measures"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid ColumnDefinitions="170,170" RowDefinitions="160,160,280,*" RowSpacing="10" ColumnSpacing="10" Padding="20,20">
+        <Frame BorderColor="LightSeaGreen" CornerRadius="15">
+            <Label Text="Cal Burnt" 
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"/>
+        </Frame>
+        <Frame BorderColor="Orange" CornerRadius="15" Grid.Column="1">
+            <Label Text="Cal Injested"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center" />
+            
+        </Frame>
+        <Frame BorderColor="Green" CornerRadius="15" Grid.Column="0" Grid.Row="1">
+            <Label Text="Weight"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"/>
+
+        </Frame>
+
+        <CarouselView Grid.Row="2" Grid.ColumnSpan="2" IndicatorView="indicatorView">
+            <CarouselView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Placeholder for graph</x:String>
+                    <x:String>Placeholder for graph2</x:String>
+                </x:Array>
+            </CarouselView.ItemsSource>
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Frame  CornerRadius="15" Margin="5,0">
+                        <Label Text="{Binding .}"/>
+                    </Frame>
+                    
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+        <IndicatorView Grid.Row="2" Grid.ColumnSpan="2"
+            x:Name="indicatorView"
+                   IndicatorColor="LightGray"
+                   SelectedIndicatorColor="DarkGray"
+                   HorizontalOptions="Center" />
+    </Grid>
+
 </ContentPage>
